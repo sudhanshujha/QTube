@@ -18,8 +18,13 @@ public class QTubeController {
     @Autowired
     QTubeService qTubeService;
 
+    // Read operation
     @GetMapping("all")
     public ResponseEntity<List<Question>> getAllQuestions(){
         return qTubeService.getAllQuestions();
     }
+    //TODO - Read operation for a specific category
+    //TODO - Create operation (Save in Db)
+    //TODO - Update operation
+    //TODO - Delete operation
 }
