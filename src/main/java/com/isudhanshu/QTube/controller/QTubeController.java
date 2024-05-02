@@ -21,16 +21,19 @@ public class QTubeController {
     public ResponseEntity<List<Question>> getAllQuestions(){
         return qTubeService.getAllQuestions();
     }
+
     // Read operation for a specific category
     @GetMapping("category/{category}")
     public List<Question> getQuestionsByCategory(@PathVariable String category){
         return qTubeService.getQuestionsByCategory(category);
     }
+
     //TODO also "&" and "||" operations in fetching data
+
     //Create/Add operation (Save in Db)
     @PostMapping("add")
-    public boolean addQuestion(Question question){
-
+    public String addQuestion(@RequestBody Question question){
+        return qTubeService.addQuestion(question);
     }
 
     //TODO - Update operation

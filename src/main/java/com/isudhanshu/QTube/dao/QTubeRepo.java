@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface QTubeRepo extends JpaRepository<Question,Integer> {
-
+    // also called DAO
     List<Question>findQuestionsByCategory(String category);
 }
