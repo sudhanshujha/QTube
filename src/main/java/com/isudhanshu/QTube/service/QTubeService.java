@@ -24,4 +24,8 @@ public class QTubeService {
         }
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
+
+    public List<Question> getQuestionsByCategory(String category) {
+        return qTubeRepo.findQuestionsByCategory(category);
+    }
 }

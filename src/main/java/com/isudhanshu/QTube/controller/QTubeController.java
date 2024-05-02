@@ -4,9 +4,7 @@ import com.isudhanshu.QTube.model.Question;
 import com.isudhanshu.QTube.service.QTubeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +21,18 @@ public class QTubeController {
     public ResponseEntity<List<Question>> getAllQuestions(){
         return qTubeService.getAllQuestions();
     }
-    //TODO - Read operation for a specific category
-    //TODO - Create operation (Save in Db)
+    // Read operation for a specific category
+    @GetMapping("category/{category}")
+    public List<Question> getQuestionsByCategory(@PathVariable String category){
+        return qTubeService.getQuestionsByCategory(category);
+    }
+    //TODO also "&" and "||" operations in fetching data
+    //Create/Add operation (Save in Db)
+    @PostMapping("add")
+    public boolean addQuestion(Question question){
+
+    }
+
     //TODO - Update operation
     //TODO - Delete operation
 }
