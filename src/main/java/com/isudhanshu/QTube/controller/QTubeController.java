@@ -24,7 +24,7 @@ public class QTubeController {
 
     // Read operation for a specific category
     @GetMapping("category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category){
+    public ResponseEntity <List<Question>> getQuestionsByCategory(@PathVariable String category){
         return qTubeService.getQuestionsByCategory(category);
     }
 
@@ -32,7 +32,7 @@ public class QTubeController {
 
     //Create/Add operation (Save in Db)
     @PostMapping("add")
-    public String addQuestion(@RequestBody Question question){
+    public ResponseEntity<String> addQuestion(@RequestBody Question question){
         return qTubeService.addQuestion(question);
     }
 

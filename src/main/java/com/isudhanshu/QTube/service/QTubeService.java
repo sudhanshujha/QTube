@@ -28,12 +28,22 @@ public class QTubeService {
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public List<Question> getQuestionsByCategory(String category) {
-        return qTubeRepo.findQuestionsByCategory(category);
+    public ResponseEntity<List<Question>> getQuestionsByCategory(String category) {
+        try{
+            return new ResponseEntity<>(qTubeRepo.findQuestionsByCategory(category),HttpStatus.OK);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
 
-    public String addQuestion(Question question) {
+    public ResponseEntity<String> addQuestion(Question question) {
+        try{
             qTubeRepo.save(question);
-            return "success";
+            return new ResponseEntity<>( "success", HttpStatus.CREATED);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>( "success", HttpStatus.BAD_REQUEST);
     }
 }
